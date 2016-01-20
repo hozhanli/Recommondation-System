@@ -15,6 +15,7 @@ import java.util.Set;
 import com.ozhanli.utils.Constant;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 
 /**
@@ -40,22 +41,32 @@ public class Recomender {
     private StringBuilder predictions = new StringBuilder();
     /* Recommendation results ==> Recommendations.txt */
     private StringBuilder recommendations = new StringBuilder();
+    
+    private Map<String, UserMovieRatings> test = new HashMap<String, UserMovieRatings>();
+    private Map<String, UserMovieRatings> pred = new HashMap<String, UserMovieRatings>();
 
     public Recomender() {
         /* Read movies ids, year and name, store in movieList */
-        readMovieList();
+        //readMovieList();
         /* Read train dataset including movieId, userId and userRate, store in UserMovieRating */
-        readTrainMovieRatings();
+        //readTrainMovieRatings();
         /* Calculates each users mean value */
-        calculateTrainUserMean();
+        //calculateTrainUserMean();
         /* Read Test movies and ratings */
-        readTestMovieRatings();
+        //readTestMovieRatings();
         /* Print prediction results to file */
-        printToFile(predictions.toString(), Constant.PREDICTION_OUTPUT_PATH);
-        printToFile(recommendations.toString(), Constant.RECOMMENDATION_OUTPUT_PATH);
+        //meanAbsoluteError = sumOfErrors / predictionCount;
+        //System.out.println("MAE: " + meanAbsoluteError);
+        //rootMeanSquareError = Math.sqrt(sumOfErrors / predictionCount);
+        //System.out.println("RMSE: " + rootMeanSquareError);
         
+        //printToFile(predictions.toString(), Constant.PREDICTION_OUTPUT_PATH);
+        //printToFile(recommendations.toString(), Constant.RECOMMENDATION_OUTPUT_PATH);
+        //readPredictions();
+        //printToFile(recommendations.toString(), Constant.RECOMMENDATION_OUTPUT_PATH);
+        //System.out.println(recommendations);
     }
-    
+
     private void readMovieList() {
         try (BufferedReader br = new BufferedReader(new FileReader(Constant.MOVIE_TITLES_PATH)))
             {
